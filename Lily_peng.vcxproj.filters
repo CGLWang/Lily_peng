@@ -18,5 +18,16 @@
     <ClCompile Include="Lily_peng.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\ecxwa\source\repos\6638_for_cpp\lily.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lily_tasks.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\ecxwa\source\repos\6638_for_cpp\lily.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
