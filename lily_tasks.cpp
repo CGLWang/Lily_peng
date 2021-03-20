@@ -1,22 +1,11 @@
-
-#define Tasks_LEN 12
-typedef int(*Tasks_def)(void*);
-
-class Task
-{
-public:
-	Task(Tasks_def);
-	Task(Tasks_def, void*);
-	void reset(Tasks_def);
-	void reset(Tasks_def, void*);
-private:
-	Tasks_def startAddress;
-	void* para;
-};
-
+#include<iostream>
+#include<list>
+#include<queue>
+#include"lily_tasks.h"
+using namespace std;
 
 Tasks_def tasks_[Tasks_LEN];
-unsigned int hasTask_, rear,front;
+unsigned int rear,front;
 void addTask_(Tasks_def task)
 {
 	tasks_[rear++] = task;
@@ -83,9 +72,7 @@ void run_tasks()
 	int i;
 	while (1)
 	{
-
 		i = rear;
-
 		while (front != i)
 		{
 
@@ -93,7 +80,34 @@ void run_tasks()
 			if (++front == Tasks_LEN)
 				front = 0;
 		}
-		//delay
 	}
+}
+
+queue<TasksArg_def> fs_arg;
+queue<void*> args;
+void addTaskArg(TasksArg_def f, void* arg)
+{
+	fs_arg.push(f);
+	args.push(arg);
+	if (!hadTask_(delegate_task_for_args))
+		addTask_(delegate_task_for_args);
+}
+
+int delegate_task_for_args()
+{
+	static int code;
+	TasksArg_def f = fs_arg.front();
+	void* a = args.front();
+
+	code = f(a);// 0->end, 1-> again
+	if (code <= 0)
+	{
+		// if return 0, pop
+		fs_arg.pop();
+		args.pop();
+	}
+	if (fs_arg.empty())
+		return 0;
+	return 1;
 }
 

@@ -18,15 +18,30 @@
     <ClCompile Include="Lily_peng.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\ecxwa\source\repos\6638_for_cpp\lily.cpp">
+    <ClCompile Include="lily_tasks.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="lily_tasks.cpp">
+    <ClCompile Include="Boardcast.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lily.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="basic.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\ecxwa\source\repos\6638_for_cpp\lily.h">
+    <ClInclude Include="Boardcast.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lily_tasks.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lily.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="basic.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
