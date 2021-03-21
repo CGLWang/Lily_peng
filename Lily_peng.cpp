@@ -12,6 +12,7 @@
 
 #include"lily_tasks.h"
 #include"lily.h"
+#include"Boardcast.h"
 #include"basic.h"
 #include <conio.h>
 
@@ -39,9 +40,15 @@ DWORD WINAPI thread1(LPVOID para)
     while (1)
     {
 
-        Sleep(1);
+        Sleep(10);
+        if(!hadTask_(lily_tick))
+            addTask_(lily_tick);
+        else
+        {
+            cout << "x";
+        }
+        //cout << "_";
     }
-
     return 0;
 }
 
@@ -65,7 +72,18 @@ void fi2_test(int a, int b, int c, int d)
 {
     cout << "a=" << a << " b=" << b << " c=" << c << " d=" << d << endl;
 }
-
+int timer1()
+{
+    static int c=20,step=-1;
+    c += step;
+    if (c < 5||c>30)
+    {
+        step *= -1;
+    }
+    set_delay(timer1, c);
+    cout << "-";
+    return 0;
+}
 int main()
 {
     lily_out = out_from_lily;
@@ -89,12 +107,15 @@ int main()
     float kp = 0;
     int ki=0;
     bool kd=false;
+
+    addTimer(timer1, 20);
     public_a_field("kp", &kp);
     public_a_field("ki", &ki,'d');
     public_a_field("kd", &kd,'b');
-
+    
     public_a_cmd("help", cmd_help);
     public_a_cmd("whos", cmd_whos);
+    public_a_cmd("exit", (Cmd_fun)exit);
 
     public_a_fun("abs", f2_test,4);
     public_a_fun("ab", fi2_test, 4, 'd');

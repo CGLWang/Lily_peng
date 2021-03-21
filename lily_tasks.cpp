@@ -2,15 +2,24 @@
 #include<list>
 #include<queue>
 #include"lily_tasks.h"
+#include<Windows.h>
 using namespace std;
 
 Tasks_def tasks_[Tasks_LEN];
 unsigned int rear,front;
+
+extern CRITICAL_SECTION cs;
 void addTask_(Tasks_def task)
 {
+	EnterCriticalSection(&cs);
 	tasks_[rear++] = task;
 	if (rear >= Tasks_LEN)
 		rear = 0;
+	if (rear == front)
+	{
+		cout << "error tasks poll full";
+	}
+	LeaveCriticalSection(&cs);
 }
 
 void endTask_(Tasks_def task)//trash
